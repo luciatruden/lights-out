@@ -4,8 +4,10 @@ import './Cell.css';
 function Cell(props){
     const { cellIndex, isOn } = props;
 
+    console.log(!isOn);
+
     return (
-        <div className="Cell" disabled={!isOn}></div>
+        <button className="Cell" disabled={!isOn}></button>
     );
 }
 
