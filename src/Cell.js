@@ -7,7 +7,7 @@ function Cell(props){
     console.log(!isOn);
 
     return (
-        <button className="Cell" disabled={!isOn}></button>
+        <button className="Cell" disabled={!isOn} ></button>
     );
 }
 

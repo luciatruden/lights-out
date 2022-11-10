@@ -4,6 +4,9 @@
 
     background-color: aquamarine;
 
+    border: none;
+    margin: 2px;
+
 }
 
 .Cell:disabled {
