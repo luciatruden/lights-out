@@ -13,7 +13,6 @@ function Board(props) {
 
     //create size*size matrix state, randomly setting isOn to true/false
     const lightsGrid = Array.from({ length: size }).map( 
-            //row
             row => ( row = 
             Array.from({ length: size }).map(
                 cell => (cell = randomLight())
@@ -24,28 +23,11 @@ function Board(props) {
 
     const [ board, setBoard ] = useState({ grid: lightsGrid });
 
-    function cellsToToggle(cellIndex){
-        const [ rowIndex, colIndex ] = cellIndex;
-
-        const toggle = new Set();
-        
-        // cellIndex, 
-        //                         [rowIndex, colIndex + 1],
-        //                         [rowIndex, colIndex - 1],
-        //                         [rowIndex + 1, colIndex],
-        //                         [rowIndex - 1, colIndex],
-        //                          );
-        console.log(toggle)
-        return toggle;     
-    }
-
     /** toggleLight: toggles a single light on/off in the state */
     const toggleLight = function(cellIndex){
         let [ cellRowIndex, cellColIndex ] = cellIndex.split("");
         cellRowIndex = parseInt(cellRowIndex);
         cellColIndex = parseInt(cellColIndex);
-
-        //console.log(`rowIndex: ${cellRowIndex}, colIndex: ${cellColIndex}`);
 
         setBoard(currSt => (
             {   ...currSt,

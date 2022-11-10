@@ -1,0 +1,11 @@
+.Board {
+    background-color: white;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Board-row {
+    display: inline-block; 
+    width: auto;
+}

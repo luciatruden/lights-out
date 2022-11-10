@@ -4,8 +4,6 @@ import './Cell.css';
 function Cell(props){
     const { cellIndex, isOn, toggleLight } = props;
 
-    
-
     function handleToggleLight() {
         toggleLight(cellIndex);
         

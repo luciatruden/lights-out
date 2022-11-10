@@ -2,3 +2,11 @@
   text-align: center;
 }
 
+.App-h1 {
+  font-family: 'Bungee Outline', cursive;
+  color: orange;
+}
+
+.App-h1 span {
+  color: rgb(18, 231, 231);
+}
