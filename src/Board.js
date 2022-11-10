@@ -4,11 +4,11 @@ import Cell from "./Cell";
 
 
 function Board(props) {
-    const { size } = props;
+    const { size, chanceLightStartsOn } = props;
 
     /** randomLight: returns random boolean */
     function randomLight(){
-        return !!(Math.floor(Math.random()* 2 ));
+        return Math.random() < chanceLightStartsOn;
     }
 
     //create size*size matrix state, randomly setting isOn to true/false
@@ -45,11 +45,11 @@ function Board(props) {
         cellRowIndex = parseInt(cellRowIndex);
         cellColIndex = parseInt(cellColIndex);
         
-        toggleLight(cellIndex);
-        toggleLight([cellRowIndex, cellColIndex + 1].join(""));
-        toggleLight([cellRowIndex, cellColIndex - 1].join(""));
-        toggleLight([cellRowIndex + 1, cellColIndex].join(""));
-        toggleLight([cellRowIndex - 1, cellColIndex].join(""));
+        toggleLight(cellIndex);                                 //toggle clicked on cell
+        toggleLight([cellRowIndex, cellColIndex + 1].join("")); //toggle right
+        toggleLight([cellRowIndex, cellColIndex - 1].join("")); //toggle left
+        toggleLight([cellRowIndex + 1, cellColIndex].join("")); //toggle down
+        toggleLight([cellRowIndex - 1, cellColIndex].join("")); //toggle up
     
     }
        
