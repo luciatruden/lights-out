@@ -12,7 +12,7 @@ function Board(props) {
     }
 
     //create size*size matrix state, randomly setting isOn to true/false
-    const board = Array.from({ length: size }).map( 
+    const lightsGrid = Array.from({ length: size }).map( 
                  //row
                  row => ( row = 
                     Array.from({ length: size }).map(
@@ -22,7 +22,11 @@ function Board(props) {
 
     )
 
-    console.log(board)
+    console.log(lightsGrid);
+
+    const [ board, setBoard ] = useState({ grid: lightsGrid });
+
+    console.log(board);
 
     return(
         <div className="Board">
