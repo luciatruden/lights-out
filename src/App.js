@@ -5,7 +5,7 @@ import Board from './Board';
 function App() {
   return (
     <div className="App">
-      <Board size={6} />
+      <Board size={5} />
 
     </div>
   );

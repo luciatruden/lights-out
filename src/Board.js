@@ -24,12 +24,28 @@ function Board(props) {
 
     const [ board, setBoard ] = useState({ grid: lightsGrid });
 
+    function cellsToToggle(cellIndex){
+        const [ rowIndex, colIndex ] = cellIndex;
+
+        const toggle = new Set();
+        
+        // cellIndex, 
+        //                         [rowIndex, colIndex + 1],
+        //                         [rowIndex, colIndex - 1],
+        //                         [rowIndex + 1, colIndex],
+        //                         [rowIndex - 1, colIndex],
+        //                          );
+        console.log(toggle)
+        return toggle;     
+    }
+
+    /** toggleLight: toggles a single light on/off in the state */
     const toggleLight = function(cellIndex){
         let [ cellRowIndex, cellColIndex ] = cellIndex.split("");
         cellRowIndex = parseInt(cellRowIndex);
         cellColIndex = parseInt(cellColIndex);
-        
-        console.log(`rowIndex: ${cellRowIndex}, colIndex: ${cellColIndex}`);
+
+        //console.log(`rowIndex: ${cellRowIndex}, colIndex: ${cellColIndex}`);
 
         setBoard(currSt => (
             {   ...currSt,
@@ -40,8 +56,19 @@ function Board(props) {
                     ))
             }
         ))
+    }
 
-
+    function toggleAllLights(cellIndex){
+        let [ cellRowIndex, cellColIndex ] = cellIndex.split("");
+        cellRowIndex = parseInt(cellRowIndex);
+        cellColIndex = parseInt(cellColIndex);
+        
+        toggleLight(cellIndex);
+        toggleLight([cellRowIndex, cellColIndex + 1].join(""));
+        toggleLight([cellRowIndex, cellColIndex - 1].join(""));
+        toggleLight([cellRowIndex + 1, cellColIndex].join(""));
+        toggleLight([cellRowIndex - 1, cellColIndex].join(""));
+    
     }
        
 
@@ -53,7 +80,7 @@ function Board(props) {
                             key={[rowIndex, colIndex].join("")}
                             cellIndex={[rowIndex, colIndex].join("")} 
                             isOn={board.grid[rowIndex][colIndex]}
-                            toggleLight={toggleLight}
+                            toggleLight={toggleAllLights}
                          />
                     ))}
                 </div>
