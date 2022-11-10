@@ -22,17 +22,39 @@ function Board(props) {
 
     )
 
-    console.log(lightsGrid);
-
     const [ board, setBoard ] = useState({ grid: lightsGrid });
 
-    console.log(board);
+    const toggleLight = function(cellIndex){
+        let [ cellRowIndex, cellColIndex ] = cellIndex.split("");
+        cellRowIndex = parseInt(cellRowIndex);
+        cellColIndex = parseInt(cellColIndex);
+        
+        console.log(`rowIndex: ${cellRowIndex}, colIndex: ${cellColIndex}`);
+
+        setBoard(currSt => (
+            {   ...currSt,
+                grid: currSt.grid.map(
+                    (row, rowIndex) => ( rowIndex === cellRowIndex
+                            ? row.map( (col, colIndex) => colIndex === cellColIndex ? !col : col)
+                            : row
+                    ))
+            }
+        ))
+
+
+    }
+       
 
     const gridDisplay = board.grid.map( function (row, rowIndex) {
             return (
-                <div className="Board-row">
+                <div className="Board-row" key={rowIndex}>
                     {row.map((col, colIndex) => (
-                        <Cell cellIndex={[rowIndex, colIndex].join("")} isOn={board.grid[rowIndex][colIndex]} />
+                        <Cell 
+                            key={[rowIndex, colIndex].join("")}
+                            cellIndex={[rowIndex, colIndex].join("")} 
+                            isOn={board.grid[rowIndex][colIndex]}
+                            toggleLight={toggleLight}
+                         />
                     ))}
                 </div>
             );

@@ -2,12 +2,20 @@ import React from "react";
 import './Cell.css';
 
 function Cell(props){
-    const { cellIndex, isOn } = props;
+    const { cellIndex, isOn, toggleLight } = props;
 
-    console.log(!isOn);
+    
+
+    function handleToggleLight() {
+        toggleLight(cellIndex);
+        
+    }
 
     return (
-        <button className="Cell" disabled={!isOn} ></button>
+        <button 
+            className={isOn?"Cell-on":"Cell-off"} 
+            onClick={handleToggleLight}
+        ></button>
     );
 }
 
