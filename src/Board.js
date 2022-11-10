@@ -13,12 +13,12 @@ function Board(props) {
 
     //create size*size matrix state, randomly setting isOn to true/false
     const lightsGrid = Array.from({ length: size }).map( 
-                 //row
-                 row => ( row = 
-                    Array.from({ length: size }).map(
-                        cell => (cell = randomLight())
-                    )
-                 )
+            //row
+            row => ( row = 
+            Array.from({ length: size }).map(
+                cell => (cell = randomLight())
+            )
+            )
 
     )
 
@@ -28,14 +28,19 @@ function Board(props) {
 
     console.log(board);
 
+    const gridDisplay = board.grid.map( function (row, rowIndex) {
+            return (
+                <div className="Board-row">
+                    {row.map((col, colIndex) => (
+                        <Cell cellIndex={[rowIndex, colIndex].join("")} isOn={board.grid[rowIndex][colIndex]} />
+                    ))}
+                </div>
+            );
+        });
+
     return(
         <div className="Board">
-            <Cell cellIndex="00" isOn={true}  />
-            <Cell cellIndex="01" isOn={true} />
-            <Cell cellIndex="02" isOn={false} />
-            <Cell cellIndex="03" isOn={true} />
-            <Cell cellIndex="04" isOn={true} />
-            <Cell cellIndex="05" isOn={true} />
+           { gridDisplay }
         </div>
     )
 }
