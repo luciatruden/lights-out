@@ -6,12 +6,17 @@ import Cell from "./Cell";
 function Board(props) {
     const { size } = props;
 
+    /** randomLight: returns random boolean */
+    function randomLight(){
+        return !!(Math.floor(Math.random()* 2 ));
+    }
+
     //create size*size matrix state, randomly setting isOn to true/false
     const board = Array.from({ length: size }).map( 
                  //row
                  row => ( row = 
                     Array.from({ length: size }).map(
-                        cell => (cell = true)
+                        cell => (cell = randomLight())
                     )
                  )
 
