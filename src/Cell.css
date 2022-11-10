@@ -10,5 +10,5 @@
 }
 
 .Cell:disabled {
-    background-color: grey;
+    background-color: rgb(197, 196, 196);
 }
