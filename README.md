@@ -1,5 +1,8 @@
 # Lights On Game
 
+Try it out:
+https://luciatruden.github.io/lights-out/
+
 ## About this project
 
 Classic Lights Out game built on React.
