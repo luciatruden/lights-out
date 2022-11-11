@@ -15,15 +15,15 @@ function Board(props) {
     const lightsGrid = Array.from({ length: size }).map( 
             row => ( row = 
             Array.from({ length: size }).map(
-                //cell => (cell = randomLight())
-                cell => (cell = false)
+                cell => (cell = randomLight())
+                //cell => (cell = false)
             )
         )
 
     )
 
-    const [ board, setBoard ] = useState({ grid: lightsGrid, hasWon: false });
-    //checkGameStatus();
+    const [ board, setBoard ] = useState({ grid: lightsGrid });
+    
 
     /** toggleLight: toggles a single light on/off in the state */
     const toggleLight = function(cellIndex){
@@ -60,23 +60,23 @@ function Board(props) {
         return board.grid.every( row => row.every( cell => !cell ) )
     }
 
-    function checkGameStatus(){
-        console.log("inside checkstatus")
-        if ( hasWon() ){
-            console.log("has won");
+    // function checkGameStatus(){
+    //     console.log("inside checkstatus")
+    //     if ( hasWon() ){
+    //         console.log("has won");
             
-            setBoard(currSt => (
-                {   ...currSt,
-                    hasWon: true
-                }
-            ))
-        }
-    }
+    //         setBoard(currSt => (
+    //             {   ...currSt,
+    //                 hasWon: true
+    //             }
+    //         ))
+    //     }
+    // }
 
     function handleClick(cellIndex){
         
         toggleAllLights(cellIndex);
-        checkGameStatus();
+        // checkGameStatus();
     }
        
 
