@@ -21,7 +21,7 @@ function Board(props) {
 
     )
 
-    const [ board, setBoard ] = useState({ grid: lightsGrid });
+    const [ board, setBoard ] = useState({ grid: lightsGrid, hasWon: false });
 
     /** toggleLight: toggles a single light on/off in the state */
     const toggleLight = function(cellIndex){
@@ -52,6 +52,31 @@ function Board(props) {
         toggleLight([cellRowIndex - 1, cellColIndex].join("")); //toggle up
     
     }
+
+    function hasWon() {
+        for ( let row of board.grid) {
+            for ( let col of row ) {
+                if (col) { return false}
+            }
+        }
+        return true;
+    }
+
+    function checkGameStatus(){
+        if ( hasWon() ){
+            setBoard(currSt => (
+                {   ...currSt,
+                    hasWon: true
+                }
+            ))
+        }
+    }
+
+    function handleClick(cellIndex){
+        
+        toggleAllLights(cellIndex);
+        checkGameStatus();
+    }
        
 
     const gridDisplay = board.grid.map( function (row, rowIndex) {
@@ -62,7 +87,7 @@ function Board(props) {
                             key={[rowIndex, colIndex].join("")}
                             cellIndex={[rowIndex, colIndex].join("")} 
                             isOn={board.grid[rowIndex][colIndex]}
-                            toggleLight={toggleAllLights}
+                            toggleLight={handleClick}
                          />
                     ))}
                 </div>
