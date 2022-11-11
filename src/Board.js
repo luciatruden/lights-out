@@ -15,13 +15,15 @@ function Board(props) {
     const lightsGrid = Array.from({ length: size }).map( 
             row => ( row = 
             Array.from({ length: size }).map(
-                cell => (cell = randomLight())
+                //cell => (cell = randomLight())
+                cell => (cell = false)
             )
-            )
+        )
 
     )
 
     const [ board, setBoard ] = useState({ grid: lightsGrid, hasWon: false });
+    checkGameStatus();
 
     /** toggleLight: toggles a single light on/off in the state */
     const toggleLight = function(cellIndex){
@@ -54,16 +56,15 @@ function Board(props) {
     }
 
     function hasWon() {
-        for ( let row of board.grid) {
-            for ( let col of row ) {
-                if (col) { return false}
-            }
-        }
-        return true;
+        
+        return board.grid.every( row => row.every( cell => !cell ) )
     }
 
     function checkGameStatus(){
+        console.log("inside checkstatus")
         if ( hasWon() ){
+            console.log("has won");
+            
             setBoard(currSt => (
                 {   ...currSt,
                     hasWon: true
@@ -96,7 +97,7 @@ function Board(props) {
 
     return(
         <div className="Board">
-           { gridDisplay }
+           {hasWon() ? <div className="Board-hasWon">Congratulations!</div> : gridDisplay }
         </div>
     )
 }
