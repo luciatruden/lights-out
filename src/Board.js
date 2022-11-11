@@ -23,7 +23,7 @@ function Board(props) {
     )
 
     const [ board, setBoard ] = useState({ grid: lightsGrid, hasWon: false });
-    checkGameStatus();
+    //checkGameStatus();
 
     /** toggleLight: toggles a single light on/off in the state */
     const toggleLight = function(cellIndex){

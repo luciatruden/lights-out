@@ -17,5 +17,16 @@
 }
 
 .Board-hasWon {
-    color: white
+    color: white;
+
+    font-family: 'Bungee Outline', cursive;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    margin-bottom: 0;
+    padding: 0 20px;
+
+    text-shadow: 
+        0 0 20px white,
+        0 0 30px white,
+        0 0 40px white;
 }
