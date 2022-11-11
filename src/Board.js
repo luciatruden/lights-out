@@ -16,7 +16,6 @@ function Board(props) {
             row => ( row = 
             Array.from({ length: size }).map(
                 cell => (cell = randomLight())
-                //cell => (cell = false)
             )
         )
 
@@ -42,6 +41,7 @@ function Board(props) {
         ))
     }
 
+    /** toggleAllLights: toggles clicked-on light and its neighbours */
     function toggleAllLights(cellIndex){
         let [ cellRowIndex, cellColIndex ] = cellIndex.split("");
         cellRowIndex = parseInt(cellRowIndex);
@@ -55,31 +55,12 @@ function Board(props) {
     
     }
 
+    /** hasWon: checks if all lights are off */
     function hasWon() {
-        
         return board.grid.every( row => row.every( cell => !cell ) )
     }
-
-    // function checkGameStatus(){
-    //     console.log("inside checkstatus")
-    //     if ( hasWon() ){
-    //         console.log("has won");
-            
-    //         setBoard(currSt => (
-    //             {   ...currSt,
-    //                 hasWon: true
-    //             }
-    //         ))
-    //     }
-    // }
-
-    function handleClick(cellIndex){
-        
-        toggleAllLights(cellIndex);
-        // checkGameStatus();
-    }
-       
-
+    
+    
     const gridDisplay = board.grid.map( function (row, rowIndex) {
             return (
                 <div className="Board-row" key={rowIndex}>
@@ -88,7 +69,7 @@ function Board(props) {
                             key={[rowIndex, colIndex].join("")}
                             cellIndex={[rowIndex, colIndex].join("")} 
                             isOn={board.grid[rowIndex][colIndex]}
-                            toggleLight={handleClick}
+                            toggleLight={toggleAllLights}
                          />
                     ))}
                 </div>
