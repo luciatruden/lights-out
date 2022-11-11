@@ -8,6 +8,7 @@ The aim of the game is to turn all the lights on the board off.
 
 When you click on one light, it will toggle on/off that light and its 4 non-diagonal neighbours (N,S,E,W).
 
+![image](https://user-images.githubusercontent.com/110251375/201321115-1daa4f59-14e1-4a47-ae8a-da309aeaec34.png)
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
